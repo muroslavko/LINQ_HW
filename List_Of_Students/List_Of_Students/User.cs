@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace List_Of_Students
+{
+    public class User
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int Age { get; set; }
+        public string Sity { get; set; }
+        public string Univercity { get; set; }
+        public Category Category { get; set; }
+    }
+
+    public enum Category
+    {
+        Net,
+        JS,
+        PHP,
+        DB,
+        OOP,
+        English
+    }
+}
