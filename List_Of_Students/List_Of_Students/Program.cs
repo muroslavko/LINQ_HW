@@ -24,7 +24,6 @@ namespace List_Of_Students
 
             //Список людей, которые прошли тесты
             var listPass = from item in TestWorks
-                           where item.Mark >= item.Test.PassMark
                            group item.User by item.User.Name
                                into u
                                select u.First();
@@ -56,9 +55,12 @@ namespace List_Of_Students
             }
             Console.WriteLine();
             //Список студентов по городам. (Из Львова: 10 студентов, из Киева: 20)
-            var listFrom = new List<User>();
-            listFrom.AddRange(Users.Where(item => item.Sity == "Lviv").Take(10));
-            listFrom.AddRange(Users.Where(item => item.Sity == "Kyiv").Take(20));
+            var listFrom =
+                Users.Where(item => item.Sity == "Lviv")
+                    .Take(10)
+                    .Union(
+                    Users.Where(item => item.Sity == "Kyiv")
+                    .Take(20));
             foreach (var item in listFrom)
             {
                 Console.WriteLine("{0}  {1}", item.Name, item.Sity);
